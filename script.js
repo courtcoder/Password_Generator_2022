@@ -1,4 +1,17 @@
-// Assignment code here
+// PASSWORD GENERATOR 2022
+// CREATED BY COURTNEY CASCI 05/01/2022
+
+// GLOBAL VARIABLES 
+var pwLength = '';
+var password = '';
+var chars = '';
+var charsG = '';
+var upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+var lowerCase = 'abcdefghijklmnopqrstuvwxyz';
+var numberChars = '0123456789';
+var specialChars = '!@#$%^&*()';
+
+
 
 
 // Get references to the #generate element
