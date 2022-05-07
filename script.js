@@ -30,7 +30,7 @@ function upperCase() {
   if (upperCase === "yes") {
     var randomNum = Math.floor(Math.random() * upperCaseChars.length);
     characters += upperCaseChars;
- reqChars += upperCaseChars.charAt(randomNum);
+    reqChars += upperCaseChars.charAt(randomNum);
   } else if (upperCase === "no") {
     characters = characters;
   } else {
@@ -42,12 +42,12 @@ function upperCase() {
 //  LOWERCASE FUNCTION
 function lowerCase() {
   var lowerCase = "";
-  lowerCase = prompt("Would You Like To Include Lowercase? (yes or no)");
+  lowerCase = prompt("Would you like to include Lowercase (yes or no)");
   lowerCase = lowerCase.toLowerCase();
   if (lowerCase === "yes") {
     var randomNum = Math.floor(Math.random() * lowerCaseChars.length);
     characters += lowerCaseChars;
- reqChars += lowerCaseChars.charAt(randomNum);
+    reqChars += lowerCaseChars.charAt(randomNum);
   } else if (lowerCase === "no") {
     characters = characters;
   } else {
@@ -57,72 +57,69 @@ function lowerCase() {
 }
 
 //  NUMBERS FUNCTION
-function numPick() {
-  var numPick = "";
-  numPick = prompt('Would You Like To Include "numbers"? (yes or no)');
-  numPick = numPick.toLowerCase();
-  if (numPick === "yes") {
-    var randomNum = Math.floor(Math.random() * numChars.length);
-    characters += numChars;
- reqChars += numChars.charAt(randomNum);
-  } else if (numPick === "no") {
+function numbChars() {
+  var numbChars = "";
+  numbChars = prompt("Would you like to include numbers? (yes or no)");
+  numbChars = numbChars.toLowerCase();
+  if (numbChars === "yes") {
+    var randomNum = Math.floor(Math.random() * numbChars.length);
+    characters += numChar;
+    reqChars += numChar.charAt(randomNum);
+  } else if (numbChars === "no") {
     characters = characters;
   } else {
     alert("Must be entered as 'yes' or 'no'");
-    numPick();
+    numbChars();
   }
 }
 
 //  SPECIAL CHARACTERS FUNCTION
-function numPick2() {
-  var numPick = "";
-  numPick = prompt(
-    "Would You Like To Include Special Characters (special)? (yes or no)"
+function specialChars() {
+  var specialChars = "";
+  specialChars = prompt(
+    "Would You Like To Include Special Characters? (yes or no)"
   );
-  numPick = numPick.toLowerCase();
-  if (numPick === "yes") {
+  specialChars = specialChars.toLowerCase();
+  if (specialChars === "yes") {
     var randomNum = Math.floor(Math.random() * specChars.length);
     characters += specChars;
- reqChars += specChars.charAt(randomNum);
-  } else if (numPick === "no") {
+    reqChars += specChars.charAt(randomNum);
+  } else if (specialChars === "no") {
     characters = characters;
   } else {
     alert("Must be entered as 'yes' or 'no'");
-    numPick2();
+    specialChars();
   }
 }
 
-//
-function failSafe() {
-  var failSafe1 = reqChars.length;
-  if (failSafe1 < 1) {
+// TELLS USER MUST PICK ONE (UPPERCASE, LOWERCASE, NUMBER, SPECIAL)
+function mustPick() {
+  var mustPick1 = reqChars.length;
+  if (mustPick1 < 1) {
     alert("You Must Pick At Least One!");
     generatePassword();
   }
 }
 
-//     Generator for above chosen criteria
 function generatePassword() {
   pwPrompt();
   upperCase();
   lowerCase();
-  numPick();
-  numPick2();
-  failSafe();
+  numbChars();
+  specialChars();
+  mustPick();
   var allChars = pwdLength - reqChars.length;
   for (var i = 0; i <= allChars; i++) {
     var randomNum = Math.floor(Math.random() * characters.length);
     password += characters.substring(randomNum, randomNum + 1);
   }
   password += reqChars;
-  //Vallidating your password
+
   return password;
 }
 
-// Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
-// Write password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
@@ -130,5 +127,4 @@ function writePassword() {
   passwordText.value = password;
 }
 
-// Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
